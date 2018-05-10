@@ -7,5 +7,8 @@ using Newtonsoft.Json;
 
 public static IActionResult Run(HttpRequest req, TraceWriter log)
 {
-    return (ActionResult)new OkObjectResult($"Helloasdasd");
+    var downloader = new MeteoDownloader();
+    var x = downloader.GetMeteoImage().Result;
+
+    return (ActionResult)new OkObjectResult($"Helloasdasd_2");
 }
