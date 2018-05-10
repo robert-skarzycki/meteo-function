@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 public static IActionResult Run(HttpRequest req, TraceWriter log)
 {
     var downloader = new MeteoDownloader();
-    var x = downloader.GetMeteoImage().Result;
+    downloader.GetMeteoImage().Wait();
 
     return (ActionResult)new OkObjectResult($"Helloasdasd_2");
 }
