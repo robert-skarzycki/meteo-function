@@ -1,14 +1,16 @@
 using System.Net.Http;
 public class MeteoDownloader
 {
+    static MeteoDownloader()
+    {
+        HttpClient = new HttpClient();
+    }
+
     public async Task<byte[]> GetMeteoImage()
     {
         var dateString = GetTodayDateStringified();
 
-        using (var client = new HttpClient())
-        {
-            return await client.GetByteArrayAsync($"http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate={dateString}&row=436&col=181&lang=pl");
-        }
+        return await HttpClient.GetByteArrayAsync($"http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate={dateString}&row=436&col=181&lang=pl");
     }
 
     private string GetTodayDateStringified()
