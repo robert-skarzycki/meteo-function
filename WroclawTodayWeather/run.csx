@@ -1,4 +1,5 @@
 #r "Newtonsoft.Json"
+#load "meteo-downloader.csx"
 
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
